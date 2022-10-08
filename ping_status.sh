@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 'ping_ip="8.8.8.8"
 while(true)
 do
