@@ -10,7 +10,27 @@ do
 
     echo "$ping_status $now" >> /tmp/ping_status.txt
     sleep 1
-done' > /etc/systemd/system/ping_status.service
+done' > /opt/ping_status.sh
+
+chmod +x /opt/ping_status.sh
+
+echo '[Unit]
+Description=ping_status
+Documentation=ping_status
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=on-failure
+
+ExecStart=/opt/ping_status.sh
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/ping_status.service
 
 systemctl daemon-reload
 systemctl start ping_status
+systemctl enable ping_status
