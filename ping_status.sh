@@ -1,5 +1,6 @@
-#!/bin/bash
-echo 'ping_ip="8.8.8.8"
+
+echo '#!/bin/bash
+ping_ip="8.8.8.8"
 while(true)
 do
     ping_status=$(ping  -c 1 "$ping_ip" | sed -n 2p)
